@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -16,9 +20,14 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
+  min-height: 100vh;
 }
 
 * {
@@ -47,4 +56,33 @@ a {
   .imgDark {
     display: unset;
   }
+}
+
+/* Placeholder image styles for development */
+.placeholder-image {
+  @apply bg-gray-200 dark:bg-gray-700;
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholder-image::after {
+  content: "Image";
+  @apply absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-500;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
 }

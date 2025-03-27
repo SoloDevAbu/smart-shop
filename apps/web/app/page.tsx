@@ -1,33 +1,40 @@
-import Image from "next/image";
+'use client';
+
 import { Navbar, CategorySection, ProductCard, Footer } from "@repo/ui";
 import { featuredProducts } from "./data/products";
+import { useStore } from "./store/store";
+import Image from "next/image";
 
 export default function Home() {
+  const { currentUser } = useStore();
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <Navbar />
-      
+      <Navbar 
+        cartCount={currentUser.cart.length}
+        userId={currentUser.id}
+      />
+
       {/* Hero Section */}
-      <section className="pt-24 pb-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative h-[500px] rounded-2xl overflow-hidden">
-            <Image
-              src="/hero-banner.jpg"
-              alt="Shop the latest trends"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
-              <div className="text-white ml-12">
-                <h1 className="text-5xl font-bold mb-4">Summer Sale</h1>
-                <p className="text-xl mb-8">Up to 50% off on selected items</p>
-                <button className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition">
-                  Shop Now
-                </button>
-              </div>
-            </div>
-          </div>
+      <section className="relative h-[600px] flex items-center">
+        <Image
+          src="/hero-banner.jpg"
+          alt="Hero Banner"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative max-w-7xl mx-auto px-4 text-center text-white">
+          <h1 className="text-5xl font-bold mb-6">
+            Discover Amazing Products
+          </h1>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Shop the latest trends and find your perfect items at unbeatable prices.
+          </p>
+          <button className="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition">
+            Shop Now
+          </button>
         </div>
       </section>
 
@@ -56,18 +63,15 @@ export default function Home() {
               Subscribe to our Newsletter
             </h2>
             <p className="text-blue-100 mb-8">
-              Get updates about new products and special offers
+              Get the latest updates on new products and upcoming sales
             </p>
-            <form className="max-w-md mx-auto flex gap-2">
+            <form className="max-w-md mx-auto flex">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg focus:outline-none"
+                className="flex-1 px-4 py-2 rounded-l-full focus:outline-none"
               />
-              <button
-                type="submit"
-                className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50"
-              >
+              <button className="bg-gray-900 text-white px-6 py-2 rounded-r-full hover:bg-gray-800 transition">
                 Subscribe
               </button>
             </form>

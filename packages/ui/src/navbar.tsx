@@ -1,14 +1,16 @@
-'use client'
+'use client';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 interface NavbarProps {
   isLoggedIn?: boolean;
-  cartItemCount?: number;
+  cartCount?: number;
+  userId?: string;
 }
 
-export const Navbar = ({ isLoggedIn = false, cartItemCount = 0 }: NavbarProps) => {
+export const Navbar = ({ isLoggedIn = false, cartCount = 0, userId = "u1" }: NavbarProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
 
@@ -54,17 +56,17 @@ export const Navbar = ({ isLoggedIn = false, cartItemCount = 0 }: NavbarProps) =
         </div>
 
         <div className="flex items-center space-x-4">
-          <Link href="/cart" className="relative">
+          <Link href={`/cart/user/${userId}`} className="relative">
             <Image src="/cart.svg" alt="Cart" width={24} height={24} />
-            {cartItemCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                {cartItemCount}
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {cartCount}
               </span>
             )}
           </Link>
           
           {isLoggedIn ? (
-            <Link href="/profile">
+            <Link href="/dashboard">
               <Image
                 src="/profile.svg"
                 alt="Profile"

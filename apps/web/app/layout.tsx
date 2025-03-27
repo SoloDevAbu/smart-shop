@@ -13,8 +13,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "SmartShop - Your One-Stop E-Commerce Destination",
-  description: "Find the best deals on electronics, fashion, home goods, and more.",
+  title: "SmartShop - Your One-Stop Shopping Destination",
+  description: "Find amazing products at great prices",
   keywords: ["e-commerce", "online shopping", "electronics", "fashion", "home goods"],
 };
 
@@ -24,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="min-h-screen font-sans antialiased">
-        <div className="flex min-h-screen flex-col">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
+      <body className="h-full antialiased">
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
           {children}
         </div>
       </body>

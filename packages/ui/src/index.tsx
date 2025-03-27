@@ -5,3 +5,6 @@ export { Code } from './code';
 export { Footer } from './footer';
 export { Navbar } from './navbar';
 export { ProductCard, type Product } from './product-card';
+export { Breadcrumb } from './breadcrumb';
+export { Toast } from './toast';
+export { Sidebar } from './sidebar';
